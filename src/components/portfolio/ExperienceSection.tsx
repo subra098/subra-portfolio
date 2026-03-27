@@ -42,13 +42,9 @@ const ExperienceSection = () => (
             }`}
           >
             {/* Timeline dot */}
-            <div className="absolute left-2.5 md:left-auto md:right-auto top-1 w-3 h-3 rounded-full bg-primary shadow-glow z-10"
-              style={{
-                [i % 2 === 0 ? "right" : "left"]: window?.innerWidth >= 768 ? "-6.5px" : undefined,
-                left: window?.innerWidth < 768 ? "10px" : (i % 2 !== 0 ? "-6.5px" : undefined),
-                right: window?.innerWidth >= 768 && i % 2 === 0 ? "-6.5px" : undefined,
-              }}
-            />
+            <div className={`absolute top-2 w-3 h-3 rounded-full bg-primary shadow-glow z-10 left-[10px] ${
+              i % 2 === 0 ? "md:left-auto md:-right-[6.5px]" : "md:-left-[6.5px]"
+            }`} />
 
             <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300">
               <div className={`flex items-center gap-2 mb-2 text-primary text-sm font-mono ${i % 2 === 0 ? 'md:justify-end' : ''}`}>
