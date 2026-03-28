@@ -5,15 +5,15 @@ import SectionHeading from "./SectionHeading";
 const education = [
   {
     degree: "Bachelor of Technology in Computer Science",
-    institution: "Your University",
-    period: "2021 – 2025",
+    institution: "NALANDA INSTITUTE OFTECHNOLOGY",
+    period: "2022 – 2026",
     grade: "CGPA: 8.5/10",
   },
   {
     degree: "Higher Secondary (XII)",
-    institution: "Your School",
-    period: "2019 – 2021",
-    grade: "Percentage: 90%",
+    institution: "GHANTESWAR HS SCHOOL , GHANTESWAR",
+    period: "2020 – 2022",
+    grade: "Percentage: 70%",
   },
 ];
 

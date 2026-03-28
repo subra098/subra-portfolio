@@ -4,21 +4,22 @@ import SectionHeading from "./SectionHeading";
 
 const experiences = [
   {
-    role: "Frontend Developer",
-    company: "Tech Company",
-    period: "Jan 2024 – Present",
+    role: "Web Development Intern",
+    company: "Techzex Software Private Limited",
+    period: "Aug 2024 – Jan 2025",
     description:
-      "Building responsive web applications using React, TypeScript, and Tailwind CSS. Collaborating with design and backend teams to deliver high-quality products.",
-    skills: ["React", "TypeScript", "Tailwind CSS", "REST APIs"],
+      "Worked as a Web Development Intern, contributing to the development of responsive and user-friendly web applications. Collaborated with the team to build clean UI components and improve overall user experience.",
+    skills: ["React.js", "JavaScript", "HTML", "CSS", "Tailwind CSS", "REST APIs", "Git"],
   },
   {
-    role: "Web Development Intern",
-    company: "Startup Inc.",
-    period: "Jun 2023 – Dec 2023",
+    role: "Frontend Developer",
+    company: "InternPe",
+    period: "Feb 2025 – Apr 2025",
     description:
-      "Developed interactive UI components and implemented responsive designs. Participated in code reviews and agile development processes.",
-    skills: ["JavaScript", "HTML/CSS", "Git", "Figma"],
-  },
+      "Worked on building responsive and user-friendly web interfaces using modern frontend technologies. Collaborated with mentors and team members to develop real-world projects and improve UI performance.",
+    skills: ["React", "TypeScript", "Tailwind CSS", "REST APIs"],
+  }
+  
 ];
 
 const ExperienceSection = () => (

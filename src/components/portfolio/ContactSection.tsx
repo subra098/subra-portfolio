@@ -4,15 +4,15 @@ import SectionHeading from "./SectionHeading";
 import { useState } from "react";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com" },
-  { icon: Phone, label: "Phone", value: "+91 XXXXX XXXXX", href: "tel:+91XXXXXXXXXX" },
-  { icon: MapPin, label: "Location", value: "India", href: "#" },
+  { icon: Mail, label: "Email", value: "subrajitj44@gmail.com", href: "subrajitj44@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+91 8249585134", href: "tel:+918249585134" },
+  { icon: MapPin, label: "Location", value: "Bhubaneswar,Odisha", href: "#" },
 ];
 
 const socials = [
-  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Github, href: "https://github.com/subra098", label: "GitHub" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Mail, href: "subrajitj44@gmail.com", label: "Email" },
 ];
 
 const ContactSection = () => {

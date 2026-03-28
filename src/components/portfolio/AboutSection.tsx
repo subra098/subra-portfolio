@@ -22,7 +22,7 @@ const AboutSection = () => (
           transition={{ duration: 0.6 }}
         >
           <p className="text-muted-foreground leading-relaxed mb-6">
-            I'm a passionate Full Stack Developer with 2+ years of experience building
+            I'm a passionate Full Stack Developer building
             modern web applications. I love turning complex problems into simple,
             beautiful, and intuitive solutions.
           </p>

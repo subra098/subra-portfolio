@@ -4,34 +4,34 @@ import SectionHeading from "./SectionHeading";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Feedback Management System",
     description:
-      "A full-featured online store with cart, authentication, payment integration, and admin dashboard. Built with modern frontend and backend technologies.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      "A platform for collecting and managing students feedback efficiently. Allows structured submission, storage, and review of feedback data.",
+    tech: ["React.js", "Node.js", "Express.js", "PostgreSQL"],
     github: "#",
     live: "#",
   },
   {
-    title: "Task Management App",
+    title: "Digital Gatepass Management System",
     description:
-      "A collaborative task management tool with real-time updates, drag-and-drop, user roles, and project boards for efficient team workflows.",
-    tech: ["TypeScript", "Next.js", "PostgreSQL", "Socket.io"],
+      "A web-based system for managing and tracking entry/exit records within a campus or hostel. Includes user authentication and admin control for monitoring requests.",
+    tech: ["React.js", "Node.js", "Express.js", "PostgreSQL"],
     github: "#",
     live: "#",
   },
   {
-    title: "AI Chat Application",
+    title: "Baba Brand Fashion (E-Commerce Platform)",
     description:
-      "An intelligent chatbot powered by machine learning with natural language processing, conversation history, and customizable AI personas.",
-    tech: ["React", "Python", "OpenAI API", "Tailwind"],
+      "A full-featured e-commerce web application with product listing, cart functionality, and user authentication. Designed to provide a smooth and responsive shopping experience.",
+    tech: ["React.js", "Node.js", "Express.js", "PostgreSQL"],
     github: "#",
     live: "#",
   },
   {
-    title: "Portfolio Website",
+    title: "Hotel Amruta Bhojana Website",
     description:
-      "A modern, responsive portfolio website with smooth animations, dark theme, and interactive elements to showcase projects and skills.",
-    tech: ["React", "Framer Motion", "Tailwind CSS"],
+      "Developed and deployed a live hotel website focused on providing a clean user experience and clear service presentation. The platform showcases room details, amenities, and booking-related information for customers.",
+    tech: ["React.js", "Node.js", "Express.js"],
     github: "#",
     live: "#",
   },

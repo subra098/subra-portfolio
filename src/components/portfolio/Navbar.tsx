@@ -1,30 +1,38 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { 
+  Home, 
+  User, 
+  Briefcase, 
+  Cpu, 
+  LayoutGrid, 
+  GraduationCap, 
+  Mail,
+  MessageSquare,
+  Menu,
+  X
+} from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#home", icon: Home },
+  { label: "About", href: "#about", icon: User },
+  { label: "Experience", href: "#experience", icon: Briefcase },
+  { label: "Skills", href: "#skills", icon: Cpu },
+  { label: "Projects", href: "#projects", icon: LayoutGrid },
+  { label: "Education", href: "#education", icon: GraduationCap },
+  { label: "Contact", href: "#contact", icon: MessageSquare },
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
       const sections = navLinks.map((l) => l.href.slice(1));
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 120) {
+        if (el && el.getBoundingClientRect().top <= 150) {
           setActiveSection(id);
           break;
         }
@@ -35,89 +43,63 @@ const Navbar = () => {
   }, []);
 
   const scrollTo = (href: string) => {
-    setIsOpen(false);
     const el = document.getElementById(href.slice(1));
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg"
-          : "bg-transparent"
-      }`}
+      initial={{ opacity: 0, x: 50, y: "-50%" }}
+      animate={{ opacity: 1, x: 0, y: "-50%" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="fixed z-50 right-2 sm:right-4 lg:right-10 top-1/2 flex flex-col items-center pointer-events-none select-none"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <motion.button
-            onClick={() => scrollTo("#home")}
-            whileHover={{ scale: 1.05 }}
-            className="font-display text-xl md:text-2xl font-bold text-gradient"
-          >
-            &lt;Dev /&gt;
-          </motion.button>
+      <div className="flex flex-col items-center gap-2.5 p-1.5 sm:p-2 rounded-full bg-[#0d1117]/60 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto max-sm:bg-transparent max-sm:border-none max-sm:shadow-none max-sm:backdrop-blur-none">
+        <LayoutGroup id="nav">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+            const isHovered = hoveredLink === link.href;
+            
+            return (
+              <div key={link.href} className="relative flex items-center group">
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -5 }}
+                      animate={{ opacity: 1, x: -10 }}
+                      exit={{ opacity: 0, x: -5 }}
+                      className="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-[#0d1117]/90 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-wider text-primary whitespace-nowrap shadow-xl hidden sm:block"
+                    >
+                      {link.label}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  activeSection === link.href.slice(1)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-secondary transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card/95 backdrop-blur-xl border-b border-border overflow-hidden"
-          >
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                <button
                   onClick={() => scrollTo(link.href)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    activeSection === link.href.slice(1)
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  onMouseEnter={() => setHoveredLink(link.href)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                  className={`relative p-2.5 sm:p-3.5 rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "text-primary bg-black/50 shadow-[inset_0_2px_8px_rgba(0,0,0,0.6)] border border-white/5 max-sm:bg-transparent max-sm:shadow-none max-sm:border-none"
+                      : "text-muted-foreground/60 hover:text-foreground hover:bg-white/5"
                   }`}
                 >
-                  {link.label}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  <link.icon size={20} className={`sm:w-[22px] sm:h-[22px] transition-transform duration-300 ${isActive ? "drop-shadow-[0_0_8px_rgba(var(--primary),0.5)] scale-110" : "group-hover:scale-110"}`} />
+                  
+                  {isActive && (
+                    <motion.div
+                      layoutId="activePill"
+                      className="absolute inset-0 rounded-full border-r-2 border-primary/40 pointer-events-none max-sm:border-r-0 max-sm:border-primary/60 max-sm:border-l-2"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              </div>
+            );
+          })}
+        </LayoutGroup>
+      </div>
     </motion.nav>
   );
 };
